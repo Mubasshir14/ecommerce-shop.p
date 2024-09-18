@@ -22,7 +22,7 @@ const Payment = () => {
         // if (hasFetchedClientSecret.current || !orderDetails) return;
 
         try {
-            const response = await axios.post('http://localhost:5000/create-payment-intent', {
+            const response = await axios.post('https://ecommerce-shop-p-server.onrender.com/create-payment-intent', {
                 amount: displayPrice,
                 ...orderDetails,
             });
@@ -65,7 +65,7 @@ const Payment = () => {
             if (paymentIntent.status === 'succeeded') {
                 // objet create all data orderDetails 
                 try{
-                    await axios.post('http://localhost:5000/payment', {
+                    await axios.post('https://ecommerce-shop-p-server.onrender.com/payment', {
                         amount: displayPrice,
                         ...orderDetails,
                         tnxID: paymentIntent.id 

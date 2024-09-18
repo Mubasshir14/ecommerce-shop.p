@@ -19,7 +19,7 @@ const UpdateProduct = () => {
 
     useEffect(() => {
         // Fetch product data by ID
-        axios.get(`http://localhost:5000/product/${id}`)
+        axios.get(`https://ecommerce-shop-p-server.onrender.com/product/${id}`)
             .then(response => {
                 const data = response.data;
                 console.log('Fetched product data:', data); // Check data in console
@@ -79,7 +79,7 @@ const UpdateProduct = () => {
                 image: imageUrl
             };
 
-            const productRes = await axios.patch(`http://localhost:5000/product/${id}`, productItem);
+            const productRes = await axios.patch(`https://ecommerce-shop-p-server.onrender.com/product/${id}`, productItem);
 
             if (productRes.status === 200) {
                 Swal.fire({

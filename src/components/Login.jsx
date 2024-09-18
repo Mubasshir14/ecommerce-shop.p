@@ -22,7 +22,7 @@ const Login = () => {
             setLoading(true);
             await signIn(email, password);
             // Navigate to home page
-            navigate(from);
+            navigate('/');
             Swal.fire('Success', 'Login Successful', 'success');
         }
         catch (err) {

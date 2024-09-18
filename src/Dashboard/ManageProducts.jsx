@@ -12,7 +12,7 @@ const ManageProducts = () => {
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        axios.get('http://localhost:5000/product')
+        axios.get('https://ecommerce-shop-p-server.onrender.com/product')
             .then((response) => {
                 setArrival(response.data);
                 setLoading(false);
@@ -35,7 +35,7 @@ const ManageProducts = () => {
             confirmButtonText: 'Yes, delete it!'
         }).then((result) => {
             if (result.isConfirmed) {
-                axios.delete(`http://localhost:5000/product/${id}`)
+                axios.delete(`https://ecommerce-shop-p-server.onrender.com/product/${id}`)
                     .then(() => {
                         // Remove the deleted item from the state
                         setArrival((prevArrival) => prevArrival.filter(item => item._id !== id));

@@ -34,7 +34,7 @@ const SignUp = () => {
             };
 
          
-            const response = await axios.post('http://localhost:5000/users', newUser);
+            const response = await axios.post('https://ecommerce-shop-p-server.onrender.com/users', newUser);
 
             if (response.status === 200) {
                 

@@ -10,7 +10,7 @@ const Notification = () => {
 
     const handleDelete = async (id) => {
         try {
-            await axios.delete(`http://localhost:5000/notification/${id}`);
+            await axios.delete(`https://ecommerce-shop-p-server.onrender.com/notification/${id}`);
             refetch(); 
         } catch (error) {
             console.error("Error deleting notification:", error);

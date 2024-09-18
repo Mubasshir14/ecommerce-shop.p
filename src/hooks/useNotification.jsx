@@ -8,7 +8,7 @@ const useNotifications = () => {
     const { refetch, data: notifications = [] } = useQuery({
         queryKey: ['notifications'],
         queryFn: async () => {
-            const res = await axios.get('http://localhost:5000/notifications');
+            const res = await axios.get('https://ecommerce-shop-p-server.onrender.com/notifications');
             return res.data;
         },
     });

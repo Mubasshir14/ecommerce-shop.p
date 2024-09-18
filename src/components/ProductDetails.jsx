@@ -67,7 +67,7 @@ const ProductDetails = () => {
     useEffect(() => {
         const fetchProduct = async () => {
             try {
-                const response = await axios.get(`http://localhost:5000/product/${id}`);
+                const response = await axios.get(`https://ecommerce-shop-p-server.onrender.com/product/${id}`);
 
                 setProduct(response.data);
             } catch (error) {
@@ -113,7 +113,7 @@ const ProductDetails = () => {
                 size: selectedSize // Add selected size
             };
 
-            axios.post('http://localhost:5000/carts', cartItem)
+            axios.post('https://ecommerce-shop-p-server.onrender.com/carts', cartItem)
                 .then(res => {
                     if (res.data.insertedId) {
                         Swal.fire({

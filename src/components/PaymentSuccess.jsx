@@ -20,7 +20,7 @@ const PaymentSuccess = () => {
 
     const handleDelete = async (id) => {
         try {
-            const response = await axios.delete(`http://localhost:5000/carts/${id}`);
+            const response = await axios.delete(`https://ecommerce-shop-p-server.onrender.com/carts/${id}`);
             if (response.data.deletedCount > 0) {
                 refetch(); 
                 console.log(`Item ${id} deleted from cart.`);

@@ -19,7 +19,7 @@ const Blazers = () => {
         const fetchProduct = async () => {
             try {
                 setLoading(true);
-                const response = await axios.get('http://localhost:5000/product');
+                const response = await axios.get('https://ecommerce-shop-p-server.onrender.com/product');
                 setProduct(response.data);
             } catch (err) {
                 console.error('Error fetching product:', err);

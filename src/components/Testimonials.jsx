@@ -13,7 +13,7 @@ const Testimonials = () => {
 
     useEffect(() => {
         const fetchReview = async () => {
-            const response = await axios.get('http://localhost:5000/review');
+            const response = await axios.get('https://ecommerce-shop-p-server.onrender.com/review');
             setReview(response.data);
         }
 

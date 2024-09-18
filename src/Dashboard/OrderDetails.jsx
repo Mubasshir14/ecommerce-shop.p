@@ -13,7 +13,7 @@ const OrderDetails = () => {
     useEffect(() => {
         const fetchOrderDetails = async () => {
             try {
-                const response = await axios.get(`http://localhost:5000/payment/${tnxID}`);
+                const response = await axios.get(`https://ecommerce-shop-p-server.onrender.com/payment/${tnxID}`);
                 setOrder(response.data);
                 setLoading(false);
             } catch (error) {

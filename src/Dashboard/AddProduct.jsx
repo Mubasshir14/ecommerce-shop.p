@@ -36,7 +36,7 @@ const AddProduct = () => {
                     image: imageRes.data.data.display_url
                 };
 
-                const productRes = await axios.post('http://localhost:5000/product', productItem);
+                const productRes = await axios.post('https://ecommerce-shop-p-server.onrender.com/product', productItem);
 
                 if (productRes.data.insertedId) {
                     reset();

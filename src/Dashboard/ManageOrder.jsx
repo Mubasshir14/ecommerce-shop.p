@@ -15,7 +15,7 @@ const ManageOrder = () => {
     useEffect(() => {
         const fetchOrder = async () => {
             try {
-                const response = await axios.get('http://localhost:5000/payment');
+                const response = await axios.get('https://ecommerce-shop-p-server.onrender.com/payment');
                 setOrder(response.data);
             } catch (error) {
                 console.error("Error fetching orders:", error);
@@ -31,7 +31,7 @@ const ManageOrder = () => {
 
     const handleStatusUpdate = async (tnxID, newStatus) => {
         try {
-            const response = await axios.patch(`http://localhost:5000/payment/${tnxID}`, {
+            const response = await axios.patch(`https://ecommerce-shop-p-server.onrender.com/payment/${tnxID}`, {
                 status: newStatus
             });
 
@@ -40,7 +40,7 @@ const ManageOrder = () => {
             ));
             const updatedOrder = order.find(o => o.tnxID === tnxID);
 
-            await axios.post('http://localhost:5000/notifications', {
+            await axios.post('https://ecommerce-shop-p-server.onrender.com/notifications', {
                 userID: updatedOrder.email,
                 message: `Your order (${tnxID}) status has been updated to ${newStatus}.`,
                 date: new Date().toISOString(),

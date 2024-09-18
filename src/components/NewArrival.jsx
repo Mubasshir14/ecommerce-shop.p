@@ -11,7 +11,7 @@ const NewArrival = () => {
         const fetchArrival = async () => {
             try {
                 setLoading(true);
-                const response = await axios.get('http://localhost:5000/product');
+                const response = await axios.get('https://ecommerce-shop-p-server.onrender.com/product');
                 setNewArrival(response.data);
             } catch (err) {
                 console.error('Error fetching new arrivals:', err);

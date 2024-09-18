@@ -9,7 +9,7 @@ const ManageUsers = () => {
     const { data: users = [], refetch } = useQuery({
         queryKey: ['users'],
         queryFn: async () => {
-            const res = await axios.get('http://localhost:5000/users');
+            const res = await axios.get('https://ecommerce-shop-p-server.onrender.com/users');
             console.log('Response:', res); return res.data;
         }
     });
@@ -25,7 +25,7 @@ const ManageUsers = () => {
             confirmButtonText: "Yes, delete it!"
         }).then((result) => {
             if (result.isConfirmed) { 
-                axios.delete(`http://localhost:5000/users/${user._id}`)
+                axios.delete(`https://ecommerce-shop-p-server.onrender.com/users/${user._id}`)
                     .then(res => {
                         if (res.data.deletedCount > 0) {
                             refetch();
@@ -59,7 +59,7 @@ const ManageUsers = () => {
             confirmButtonText: "Yes, make admin!"
         }).then((result) => {
             if (result.isConfirmed) {
-                axios.patch(`http://localhost:5000/users/${user._id}`, { role: "admin" })
+                axios.patch(`https://ecommerce-shop-p-server.onrender.com/users/${user._id}`, { role: "admin" })
                     .then(res => {
                         if (res.data.modifiedCount > 0) { 
                             refetch(); 

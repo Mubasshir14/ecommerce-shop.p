@@ -14,7 +14,7 @@ const MyOrders = () => {
     useEffect(() => {
         const fetchOrders = async () => {
             try {
-                const response = await axios.get('http://localhost:5000/payment');
+                const response = await axios.get('https://ecommerce-shop-p-server.onrender.com/payment');
                 setOrders(response.data || []);
             } catch (error) {
                 setError('Error fetching orders');

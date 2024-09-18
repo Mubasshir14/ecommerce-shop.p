@@ -35,7 +35,7 @@ const SubmitReview = ({ user: propUser, productName, onReviewSubmitted }) => {
         setIsLoading(true); // Set loading state before starting the request
 
         try {
-            const response = await axios.post('http://localhost:5000/reviews', review);
+            const response = await axios.post('https://ecommerce-shop-p-server.onrender.com/reviews', review);
             if (response.status === 201) {
                 Swal.fire({
                     title: 'Success!',
