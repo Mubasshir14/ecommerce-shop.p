@@ -298,6 +298,14 @@ const ProductDetails = () => {
                         >
                             Reviews
                         </Tab>
+                        <Tab
+                            onClick={() => setActiveTab('faq')}
+                            className={`py-2 px-4 text-lg font-semibold cursor-pointer 
+          ${activeTab === 'faq' ? 'border-b-2 border-blue-600 text-blue-600' : 'hover:text-blue-600'} 
+          focus:outline-none`}
+                        >
+                            FAQ
+                        </Tab>
                     </TabList>
 
                     <TabPanel>
@@ -396,6 +404,33 @@ const ProductDetails = () => {
                                 Add Review
                             </button>
                         </div>
+
+                    </TabPanel>
+                    <TabPanel>
+                    <section className="">
+	<div className="container flex flex-col justify-center p-4 mx-auto md:p-8">
+		<p className="p-2 text-sm font-medium tracking-wider text-center uppercase">How it works</p>
+		<h2 className="mb-12 text-4xl font-bold leading-none text-center sm:text-5xl">Frequently Asked Questions</h2>
+		<div className="grid gap-10 md:gap-8 sm:p-3 md:grid-cols-2 lg:px-12 xl:px-32">
+			<div>
+				<h3 className="font-semibold">What payment methods do you accept?</h3>
+				<p className="mt-1 ">We accept a variety of payment methods, including credit/debit cards, PayPal, and major digital wallets. You can also use store credit or promotional codes during checkout.</p>
+			</div>
+			<div>
+				<h3 className="font-semibold">How long does shipping take?</h3>
+				<p className="mt-1 ">Shipping times depend on your location. Domestic orders usually arrive within 3-5 business days, while international orders may take 7-14 business days. Expedited shipping options are also available at checkout.</p>
+			</div>
+			<div>
+				<h3 className="font-semibold">Can I return or exchange an item?</h3>
+				<p className="mt-1 ">Yes, we have a 30-day return policy. If you're not satisfied with your purchase, you can return or exchange it within 30 days of receiving the item, as long as it’s in its original condition. Check our return policy page for more details.</p>
+			</div>
+			<div>
+				<h3 className="font-semibold">How can I track my order?</h3>
+				<p className="mt-1 ">Once your order is shipped, you will receive a tracking number via email. You can use this number to track your order through our website or the carrier’s site. If you have any issues, feel free to contact our support team.</p>
+			</div>
+		</div>
+	</div>
+</section>
 
                     </TabPanel>
                 </Tabs>

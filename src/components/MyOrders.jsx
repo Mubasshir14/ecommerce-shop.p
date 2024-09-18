@@ -9,7 +9,7 @@ const MyOrders = () => {
     const { user } = useAuth();
     const [orders, setOrders] = useState([]);
     const [loading, setLoading] = useState(true);
-    const [error, setError] = useState(null);
+
 
     useEffect(() => {
         const fetchOrders = async () => {
@@ -30,7 +30,7 @@ const MyOrders = () => {
     const myOrders = orders.filter(order => order.email === user.email);
 
     if (loading) return <Loader/>;
-    if (error) return <div>{error}</div>;
+
 
     return (
         <div>

@@ -51,6 +51,10 @@ import PaymentSuccess from './components/PaymentSuccess.jsx';
 import MyOrders from './components/MyOrders.jsx';
 import ManageOrder from './Dashboard/ManageOrder.jsx';
 import OrderDetails from './Dashboard/OrderDetails.jsx';
+import ErrorPage from './components/ErrorPage.jsx';
+import Notification from './components/Notification.jsx';
+import TopSelling from './components/TopSelling.jsx';
+import NewArrival from './components/NewArrival.jsx';
 const queryClient = new QueryClient();
 const stripePromise = loadStripe(import.meta.env.VITE_REACT_APP_STRIPE_PUBLIC_KEY);
 
@@ -58,6 +62,7 @@ const router = createBrowserRouter([
   {
     path: "/",
     element: <App />,
+    errorElement: <ErrorPage/>,
     children: [
       {
         path: '/',
@@ -164,6 +169,14 @@ const router = createBrowserRouter([
         path: '/search',
         element: <Search />
       },
+      {
+        path: '/new-arrival',
+        element: <NewArrival />
+      },
+      {
+        path: '/top-selling',
+        element: <TopSelling />
+      },
 
       {
         path: '/add-product',
@@ -190,6 +203,12 @@ const router = createBrowserRouter([
         element: <PrivateRoute><AdminRoute><OrderDetails /></AdminRoute></PrivateRoute>
       },
       { path: '/dashboard', element: <PrivateRoute><Dashboard /></PrivateRoute> },
+      {
+        path: '/notifications',
+        element: <PrivateRoute>
+          <Notification  />
+        </PrivateRoute>
+      },
     ]
   },
 

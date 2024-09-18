@@ -60,7 +60,7 @@ const ManageProducts = () => {
     if (loading) return <Loader />;
 
     return (
-        <div>
+        <div className='mb-6'>
             <Dashboard/>
             <div className='max-w-screen-xl mx-auto -mt-20 md:-mt-28'>
                 <div>

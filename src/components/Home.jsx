@@ -11,16 +11,20 @@ import AllProduct from './AllProduct';
 const Home = () => {
     return (
         <div>
-            <Banner/>
-            <Brands/>
-            <NewArrival/>
-            <TopSelling/>
-            <Browse/>
-            <div className='max-w-screen-xl mx-auto mb-10'>
-            <AllProduct/>
+            <Banner />
+            <Brands />
+            <div id='new-arrival'>
+                <NewArrival />
             </div>
-            <Newslrtter/>
-            <Testimonials/>
+           <div id='top-selling'>
+           <TopSelling />
+           </div>
+            <Browse />
+            <div id='brand' className='max-w-screen-xl mx-auto mb-10'>
+                <AllProduct />
+            </div>
+            <Newslrtter />
+            <Testimonials />
         </div>
     );
 };

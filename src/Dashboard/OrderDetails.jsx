@@ -2,9 +2,10 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
 import jsPDF from 'jspdf';
+import Loader from '../components/Loader';
 
 const OrderDetails = () => {
-    const { paymentIntentId } = useParams(); // Get paymentIntentId from URL
+    const { tnxID } = useParams(); 
     const [order, setOrder] = useState(null);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
@@ -23,14 +24,14 @@ const OrderDetails = () => {
         };
 
         fetchOrderDetails();
-    }, [paymentIntentId]);
+    }, [tnxID]);
 
     const downloadPDF = () => {
         const doc = new jsPDF();
         doc.text('Order Details', 10, 10);
         
         // Order Information
-        doc.text(`Order ID: ${order.paymentIntentId}`, 10, 20);
+        doc.text(`Order ID: ${order.tnxID}`, 10, 20);
         doc.text(`Status: ${order.status}`, 10, 30);
         doc.text(`Amount: $${order.amount}`, 10, 40);
         doc.text(`Created At: ${new Date(order.createdAt).toLocaleString()}`, 10, 50);
@@ -51,7 +52,7 @@ const OrderDetails = () => {
         doc.save('order-details.pdf');
     };
 
-    if (loading) return <div className="text-center py-4">Loading...</div>;
+    if (loading) return <Loader/>;
     if (error) return <div className="text-center py-4 text-red-500">Error: {error}</div>;
 
     return (
@@ -61,13 +62,12 @@ const OrderDetails = () => {
                 {order ? (
                     <>
                         <div className="mb-6">
-                            <p className="mb-2"><strong>Order ID:</strong> {order.paymentIntentId}</p>
-                            <p className="mb-2"><strong>Status:</strong> {order.status}</p>
-                            <p className="mb-2"><strong>Amount:</strong> ${order.amount}</p>
-                            <p className="mb-2"><strong>Created At:</strong> {new Date(order.createdAt).toLocaleString()}</p>
-                            <p className="mb-2"><strong>Name:</strong> {order.name}</p>
-                            <p className="mb-2"><strong>Email:</strong> {order.email}</p>
-                            <p className="mb-2"><strong>Address:</strong> {order.address}</p>
+                            <p className="mb-2 uppercase"><strong>Order ID:</strong> {order.tnxID}</p>
+                            <p className="mb-2 uppercase"><strong>Status:</strong> {order.status}</p>
+                            <p className="mb-2 uppercase"><strong>Amount:</strong> ${order.amount}</p>
+                            <p className="mb-2 uppercase"><strong>Name:</strong> {order.name}</p>
+                            <p className="mb-2 "><strong className='uppercase'>Email:</strong> {order.email}</p>
+                            <p className="mb-2 uppercase"><strong>Address:</strong> {order.address}</p>
                         </div>
 
                         <h2 className="text-xl font-semibold mb-4">Cart Items:</h2>

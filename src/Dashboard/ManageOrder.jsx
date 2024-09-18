@@ -4,9 +4,13 @@ import Dashboard from './Dashboard';
 import { FcApprove, FcDisapprove } from 'react-icons/fc';
 import { FaEye } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
+import useAuth from '../hooks/useAuth';
+import Loader from '../components/Loader';
 
 const ManageOrder = () => {
     const [order, setOrder] = useState([]);
+    const {user} = useAuth();
+    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         const fetchOrder = async () => {
@@ -15,27 +19,41 @@ const ManageOrder = () => {
                 setOrder(response.data);
             } catch (error) {
                 console.error("Error fetching orders:", error);
+            } finally {
+                setLoading(false);
             }
         }
         fetchOrder();
     }, []);
+    
 
-    // Function to handle status update
+
+
     const handleStatusUpdate = async (tnxID, newStatus) => {
         try {
             const response = await axios.patch(`http://localhost:5000/payment/${tnxID}`, {
                 status: newStatus
             });
 
-            // Update the status in the local state after the patch request is successful
             setOrder(prevOrders => prevOrders.map(order =>
                 order.tnxID === tnxID ? { ...order, status: newStatus } : order
             ));
+            const updatedOrder = order.find(o => o.tnxID === tnxID);
+
+            await axios.post('http://localhost:5000/notifications', {
+                userID: updatedOrder.email,
+                message: `Your order (${tnxID}) status has been updated to ${newStatus}.`,
+                date: new Date().toISOString(),
+                
+            });
+            console.log(message);
 
         } catch (error) {
             console.error("Error updating order status:", error);
         }
     };
+
+    if(loading)  return <Loader/>
 
     return (
         <div>
@@ -55,7 +73,7 @@ const ManageOrder = () => {
                                             <td className="py-2 px-4 uppercase font-bold">Price</td>
                                             <td className="py-2 px-4 uppercase font-bold">Payment ID</td>
                                             <td className="py-2 px-4 uppercase font-bold">Amount</td>
-                                            <td className="py-2 px-4 uppercase font-bold">Time</td>
+                                           
                                             <td className="py-2 px-4 uppercase font-bold">Status</td>
                                             <td className="py-2 px-4 uppercase font-bold">Action</td>
                                             <td className="py-2 px-4 uppercase font-bold">View</td>
@@ -75,7 +93,7 @@ const ManageOrder = () => {
                                                         <>
                                                             <td className="py-2 px-4 text-[#737373] uppercase">{order.tnxID}</td>
                                                             <td className="py-2 px-4 text-[#737373] uppercase">{order.amount}</td>
-                                                            <td className="py-2 px-4 text-[#737373] uppercase">{new Date(order.createdAt).toLocaleString()}</td>
+                                                            
                                                             <td className="py-2 px-4 text-center text-black uppercase">
                                                                 <span className={`px-3 py-1 rounded text-white ${order.status === 'Shipped' ? 'bg-green-500' : order.status === 'Cancel' ? 'bg-red-500' : 'bg-blue-500'}`}>
                                                                     {order.status}

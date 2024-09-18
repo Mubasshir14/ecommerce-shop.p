@@ -1,5 +1,6 @@
 import React from 'react';
 import h from '../assets/h.png';
+import { Link } from 'react-router-dom';
 
 const Banner = () => {
     return (
@@ -17,7 +18,7 @@ const Banner = () => {
                             Browse through our diverse range of meticulously crafted garments, designed to bring out your individuality and cater to your sense of style.
                         </p>
                         <div className="flex justify-center md:justify-start">
-                            <button className="btn btn-outline">Shop Now</button>
+                            <Link to='/shop' className="btn btn-outline">Shop Now</Link>
                         </div>
 
                         {/* Stats Section */}

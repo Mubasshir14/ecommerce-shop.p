@@ -1,7 +1,7 @@
 import React from 'react';
 import useAuth from '../hooks/useAuth';
 import { useNavigate } from 'react-router-dom';
-
+import img from '../assets/9-768x768.jpg'
 const Profile = () => {
     const { user, logOut } = useAuth();
     const navigate = useNavigate();
@@ -19,7 +19,7 @@ const Profile = () => {
         <div className='max-w-screen-xl mx-auto'>
             <div className='flex items-center justify-center my-20'>
                 <div className="flex flex-col justify-center  p-6 shadow-md rounded-xl sm:px-12  border-black border-2">
-                    <img src={user?.photoURL} className="w-32 h-32 mx-auto rounded-full  aspect-square" />
+                    <img src={user?.photoURL || img} className="w-32 h-32 mx-auto rounded-full  aspect-square" />
                     <div className="space-y-4 text-center divide-y dark:divide-gray-300">
                         <div className="my-2 space-y-1">
                             <h2 className="text-xl font-semibold sm:text-2xl">{user?.displayName}</h2>

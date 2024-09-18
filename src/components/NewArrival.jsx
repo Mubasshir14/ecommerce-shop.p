@@ -28,7 +28,7 @@ const NewArrival = () => {
 
     return (
         <div className="p-4">
-            <div className='max-w-screen-xl mx-auto mt-20'>
+            <div className='max-w-screen-xl mx-auto mt-20 mb-20'>
                 <h2 className='md:text-4xl text-2xl  uppercase font-extrabold text-center mb-4'>New Arrivals</h2>
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
                     {
